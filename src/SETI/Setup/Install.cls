@@ -3,10 +3,27 @@ Class SETI.Setup.Install
 
 ClassMethod Install()
 {
+    do ..SetHSLIBToWrite()
     do ..Mappings()
     do ..Compile()
     do ..AddManagmentPortal()
     do ..EditPath()
+}
+
+/// Give HSLIB read-permission, so we can write to the Health pages in
+/// the managment portal.
+ClassMethod SetHSLIBToWrite()
+{
+    try {
+        zn "%SYS"
+        Set db=##Class(SYS.Database).%OpenId("hslib")
+        s db.ReadOnly = 0
+        do db.%Save()
+        zn "HSCUSTOM"
+    } catch {
+        zn "HSCUSTOM"
+        w "SetHSLIBToWrite: Switching to %SYS failed"
+    }
 }
 
 /// Add CSP, global mappings.
@@ -59,15 +76,15 @@ ClassMethod AddManagmentPortal()
             }
         }
 
-	set implementation = portal.Methods.GetAt(key).Implementation
-	do implementation.Rewind()
+	    set implementation = portal.Methods.GetAt(key).Implementation
+	    do implementation.Rewind()
 	
-	if (implementation.ReadLine() = "	Do ..AddOption($$$Text(""SDA Studio""),$$$Text(""Customize SDA Data Model""),"""",""SETI.CSP.SDAStudio.cls"",,..Link(""portal/role_48.gif""),,.pData,.n2,pN1)")
-        { quit }
+	    if (implementation.ReadLine() = "   Do ..AddOption($$$Text(""SDA Studio""),$$$Text(""Customize SDA Data Model""),"""",""SETI.CSP.SDAStudio.cls"",,..Link(""portal/role_48.gif""),,.pData,.n2,pN1)")
+            { quit }
 
-	// add the SDA Studio option
+	    // add the SDA Studio option
         set addSDAStudio = ##class(%Stream.TmpCharacter).%New()
-        if addSDAStudio.WriteLine("	Do ..AddOption($$$Text(""SDA Studio""),$$$Text(""Customize SDA Data Model""),"""",""SETI.CSP.SDAStudio.cls"",,..Link(""portal/role_48.gif""),,.pData,.n2,pN1)")
+        do addSDAStudio.WriteLine("   Do ..AddOption($$$Text(""SDA Studio""),$$$Text(""Customize SDA Data Model""),"""",""SETI.CSP.SDAStudio.cls"",,..Link(""portal/role_48.gif""),,.pData,.n2,pN1)")
         do addSDAStudio.CopyFrom(implementation)
 
         //make it the new implementation
@@ -87,14 +104,27 @@ ClassMethod EditPath()
 {
     try {
         zn "%SYS"
+
+        // get build version of OS
+        set OS = $system.Version.GetBuildOS()
+        if OS = "UNIX" {
+            set ext = "dist/sda-studio/"
+        }
+        if OS = "Windows" {
+            set ext = "dist\sda-studio\"
+        }
+
+        // get the seti project
         set dispatch = ##class(Security.Applications).%OpenId("/seti")
+
         // the build is in the dist folder
-        set dispatch.Path = dispatch.Path _ "dist\sda-studio\"
+        set dispatch.Path = dispatch.Path _ ext
         do dispatch.%Save()
         zn "HSCUSTOM"
+
     } catch {
         zn "HSCUSTOM"
-        write !, "Switching to %SYS failed"
+        write !, "EditPath: Switching to %SYS failed"
     }
 }
 

@@ -8,6 +8,9 @@ ClassMethod SetPorts()
     // get ucr port
     do ##class(%RoutineMgr).GetWebServerPort(.port)
     set ^ucrPort = port
+    /// because instance name is usually all caps, but for a website it needs to be all lower
+    set instance = ##class(%SYS.System).GetInstanceName()
+    set instance = $ZCONVERT(instance, "L")
 
     READ !, "Please enter your Clinical Viewer web port number:", !, viewer
     set ^viewerPort = viewer
@@ -18,9 +21,9 @@ ClassMethod SetPorts()
     set xdata = sdaStudio.XDatas.GetAt(1).Data
 
     set newStream = ##class(%Stream.TmpCharacter).%New()
-    do newStream.WriteLine("<page xmlns=""http://www.intersystems.com/zen"" title=""SDA Studio"">")
+    do newStream.WriteLine("<page xmlns=""http://www.intersystems.com/zen"">")
     do newStream.WriteLine("<html id=""titleBar"" OnDrawContent=""DrawTitle""/>")
-    do newStream.WriteLine("<iframe width=""100%"" height=""100%"" src=""http://localhost:" _ ^ucrPort  _ "/seti/index.html"" frameBorder=""0"" id=""display""></iframe>")
+    do newStream.WriteLine("<iframe width=""100%"" height=""100%"" src=""http://localhost:" _ ^ucrPort _ "/" _ instance _ "/seti/index.html"" frameBorder=""0"" id=""display""></iframe>")
     do newStream.WriteLine("</page>")
     // copy from the new stream
     do xdata.Clear()
