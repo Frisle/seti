@@ -40,6 +40,23 @@ export class SdaExtensionsService {
   // get ports from the website and from then use that to get it from the API
   getPorts(): void {
     this.ucrURL = "http://localhost:" + window.location.port
+
+    const pathname = window.location.pathname;
+
+    let firstSegment: string = '';
+
+    // Split the pathname into segments
+    const segments = pathname.split('/');
+
+    // Check if there are any segments and extract the first one
+    if (segments.length > 1) {
+      firstSegment = segments[1]; // Extract the first segment
+    }
+
+    if (firstSegment != "csp") {
+      this.ucrURL = "http://localhost:" + window.location.port + "/" + firstSegment
+    }
+
     var keys : string[]= []
     this.http.get(this.ucrURL + "/dispatch/getViewerPort").toPromise().then(data => {
       for (let key in data) {

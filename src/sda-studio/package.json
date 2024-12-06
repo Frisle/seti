@@ -20,7 +20,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
-    "@intersystems/styles": "^4.2.1",
+    "@intersystems/styles": "https://arti.iscinternal.com:443/artifactory/npm-local/%40intersystems/styles/-/styles-7.0.0.tgz",
     "angular-in-memory-web-api": "^0.14.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -37,6 +37,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.7.2"
+    "typescript": "4.8"
   }
 }
