@@ -15,6 +15,8 @@ ClassMethod SetPorts()
     READ !, "Please enter your Clinical Viewer web port number:", !, viewer
     set ^viewerPort = viewer
     write !
+    READ !, "Please enter your Clinical Viewer instance name:", !, viewer
+    set ^viewerInstance = viewer
 
     // 2. Add port numbers to XData of the CSP for SDAStudio.
     set sdaStudio = ##class(%Dictionary.ClassDefinition).%OpenId("SETI.CSP.SDAStudio")

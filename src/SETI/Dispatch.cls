@@ -21,6 +21,8 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 <Route Url="/getPropertyObjects" Method="GET" Call="GetPropertyObjects" Cors="true"/>
 
 <Route Url="/getViewerPort" Method="GET" Call="GetViewerPort" Cors="true"/>
+<Route Url="/getViewerInstance" Method="GET" Call="GetViewerInstance" Cors="true"/>
+
 </Routes>
 }
 
@@ -224,6 +226,13 @@ ClassMethod GetPropertyObjects() As %Status
 ClassMethod GetViewerPort() As %Status
 {
     w "{ """ _ ^viewerPort _ """: "" "" }"
+
+    Quit $$$OK
+}
+
+ClassMethod GetViewerInstance() As %Status
+{
+    w "{ """ _ ^viewerInstance _ """: "" "" }"
 
     Quit $$$OK
 }

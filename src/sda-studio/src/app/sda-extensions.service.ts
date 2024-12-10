@@ -64,6 +64,15 @@ export class SdaExtensionsService {
       }
       this.viewerURL = "http://localhost:" + keys[0]
     })
+
+    var keys : string[]= []
+    this.http.get(this.ucrURL + "/dispatch/getViewerInstance").toPromise().then(data => {
+      for (let key in data) {
+        keys.push(key)
+      }
+      this.viewerURL = this.viewerURL + "/" + keys[0]
+    })
+    
   }
 
   getDatatypes(): Observable<string[]> {
