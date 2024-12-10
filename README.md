@@ -21,11 +21,17 @@
 
 # SDA Extension Tool (SETI)
 The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensions to Clinical Viewer and Health Insight. 
+```
 
+```
 # Quick Start Guide
 ### Installation
-1. For Unified Care Record open a Terminal in the HSCUSTOM namespace.
-2. Install ObjectScript Package Manger: 
+0. We are assuming you are using the standard UCR demo setup - to do that on  afresh install, run the following:
+```
+do ##class(HS.Util.Installer).InstallDemo()
+```
+2. For Unified Care Record open a Terminal in the HSCUSTOM namespace.
+3. Install ObjectScript Package Manger: 
 ```
 s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
 ```
