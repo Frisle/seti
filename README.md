@@ -21,9 +21,7 @@
 
 # SDA Extension Tool (SETI)
 The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensions to Clinical Viewer and Health Insight. 
-```
 
-```
 # Quick Start Guide
 ### Installation
 0. We are assuming you are using the standard UCR demo setup - to do that on  afresh install, run the following:
