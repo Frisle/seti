@@ -29,7 +29,7 @@ The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensi
 ```
 s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
 ```
-3. Use [ObjectScript Package Manager](https://openexchange.intersystems.com/package/ObjectScript-Package-Manager) to install SETI.
+3. Use [ObjectScript Package Manager](https://openexchange.intersystems.com/package/InterSystems-Package-Manager-1) to install SETI.
 ```
 HSCUSTOM> zpm "install seti"
 ```
@@ -43,11 +43,11 @@ You can change the web port at any time by running:
 HSCUSTOM> do ##class(SETI.Setup.Ports).SetPorts()
 ```
 ### Requirements
-* [ObjectScript Package Manager](https://openexchange.intersystems.com/package/ObjectScript-Package-Manager) installed 
+* [ObjectScript Package Manager](https://openexchange.intersystems.com/package/InterSystems-Package-Manager-1) installed 
 * HealthShare with appropriate license (or see [IRIS for Health](#iris-for-health))
 * SETI uses namespace naming conventions of InstallDemo() ie. HSREGISTRY, HSANALYTICS, HSVIEWER (see [Setup Overview](#setup-overview))
 * Install to unlock Clinical Viewer functonality: [SDA Extension Tool Viewer](https://openexchange.intersystems.com/package/SETI-Viewer-1)
-### Usage ([Demo](https://intersystemscorporation-my.sharepoint.com/:v:/g/personal/lkabelka_intersystems_com/EVTw-fv2kE5IhnDx0HdrKhwBjMAwQ_fZp1OkpCQkUeKd9A))
+### Usage ([Demo- coming soon]())
 1. Add your extensions in SDA Studio.
 2. Add a patient with those extensions.
 3. View your extensions in Health Insight and Clinical Viewer. <br>
