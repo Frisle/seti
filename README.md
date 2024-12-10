@@ -35,10 +35,14 @@ HSCUSTOM> zpm "install seti"
 ```
 4. You will be prompted to enter the web port number for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number. 
 ```
-Please enter your Clinical Viewer web port number:
-52774 
+Please enter your Clinical Viewer web :
+80 
 ```
-You can change the web port at any time by running:
+```
+Please enter your Clinical Viewer instance name:
+cv 
+```
+You can change the web port / instance name at any time by running:
 ```
 HSCUSTOM> do ##class(SETI.Setup.Ports).SetPorts()
 ```
