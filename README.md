@@ -24,7 +24,7 @@ The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensi
 
 # Quick Start Guide
 ### Installation
-0. We are assuming you are using the standard UCR demo setup - to do that on  afresh install, run the following:
+0. We are assuming you are using the standard UCR demo setup - to do that on  a fresh install, run the following:
 ```
 do ##class(HS.Util.Installer).InstallDemo()
 ```
