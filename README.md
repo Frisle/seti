@@ -1,5 +1,4 @@
 [![Gitter](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/SETI)
- [![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%2Fintersystems-iris-dev-template&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%2Fseti)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat&logo=AdGuard)](LICENSE)
 
 <h1 align="center">
@@ -26,11 +25,15 @@ The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensi
 # Quick Start Guide
 ### Installation
 1. For Unified Care Record open a Terminal in the HSCUSTOM namespace.
-2. Use [ObjectScript Package Manager](https://openexchange.intersystems.com/package/ObjectScript-Package-Manager) to install SETI.
+2. Install ObjectScript Package Manger: 
+```
+s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
+```
+3. Use [ObjectScript Package Manager](https://openexchange.intersystems.com/package/ObjectScript-Package-Manager) to install SETI.
 ```
 HSCUSTOM> zpm "install seti"
 ```
-3. You will be prompted to enter the web port number for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number. 
+4. You will be prompted to enter the web port number for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number. 
 ```
 Please enter your Clinical Viewer web port number:
 52774 
