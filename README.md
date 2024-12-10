@@ -33,7 +33,7 @@ s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.
 ```
 HSCUSTOM> zpm "install seti"
 ```
-4. You will be prompted to enter the web port number for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number. 
+4. You will be prompted to enter the web port number and instance name for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number or instance name. 
 ```
 Please enter your Clinical Viewer web :
 80 
