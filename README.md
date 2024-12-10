@@ -28,7 +28,7 @@ The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensi
 ```
 do ##class(HS.Util.Installer).InstallDemo()
 ```
-2. For Unified Care Record open a Terminal in the HSCUSTOM namespace.
+1. For Unified Care Record open a Terminal in the HSCUSTOM namespace.
 3. Install ObjectScript Package Manger: 
 ```
 s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
