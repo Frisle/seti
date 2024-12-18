@@ -34,12 +34,15 @@ export class SdaExtensionsService {
 
   // INSERT PORTS
   ucrURL = ""
+  ucrInstance = ""
   viewerURL = ""
   // INSERT PORTS
 
   // get ports from the website and from then use that to get it from the API
   getPorts(): void {
-    this.ucrURL = "http://localhost:" + window.location.port
+    this.ucrInstance = window.location.pathname.split('/')[1];
+    this.ucrURL = "http://localhost:" + window.location.port + "/" + this.ucrInstance;
+
     var keys : string[]= []
     this.http.get(this.ucrURL + "/dispatch/getViewerPort").toPromise().then(data => {
       for (let key in data) {
