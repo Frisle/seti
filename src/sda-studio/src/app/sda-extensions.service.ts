@@ -40,28 +40,8 @@ export class SdaExtensionsService {
 
   // get ports from the website and from then use that to get it from the API
   getPorts(): void {
-<<<<<<< HEAD
-    this.ucrInstance = window.location.pathname.split('/')[1];
-    this.ucrURL = "http://localhost:" + window.location.port + "/" + this.ucrInstance;
-=======
-    this.ucrURL = "http://localhost:" + window.location.port
-
-    const pathname = window.location.pathname;
-
-    let firstSegment: string = '';
-
-    // Split the pathname into segments
-    const segments = pathname.split('/');
-
-    // Check if there are any segments and extract the first one
-    if (segments.length > 1) {
-      firstSegment = segments[1]; // Extract the first segment
-    }
-
-    if (firstSegment != "csp") {
-      this.ucrURL = "http://localhost:" + window.location.port + "/" + firstSegment
-    }
->>>>>>> 4e82b6aa7f6724eacc3a0637447d503036350732
+    this.ucrURL = "http://localhost:" + window.location.port;
+    this.ucrURL = this.ucrURL + "/" + window.location.pathname.split('/')[1];
 
     var keys : string[]= []
     this.http.get(this.ucrURL + "/dispatch/getViewerPort").toPromise().then(data => {
@@ -71,14 +51,12 @@ export class SdaExtensionsService {
       this.viewerURL = "http://localhost:" + keys[0]
     })
 
-    var keys : string[]= []
     this.http.get(this.ucrURL + "/dispatch/getViewerInstance").toPromise().then(data => {
       for (let key in data) {
         keys.push(key)
       }
       this.viewerURL = this.viewerURL + "/" + keys[0]
     })
-    
   }
 
   getDatatypes(): Observable<string[]> {
