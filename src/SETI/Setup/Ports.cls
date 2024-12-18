@@ -15,6 +15,8 @@ ClassMethod SetPorts()
     READ !, "Please enter your Clinical Viewer web port number:", !, viewer
     set ^viewerPort = viewer
     write !
+    READ !, "Please enter your Clinical Viewer instance name:", !, viewer
+    set ^viewerInstance = viewer
 
     READ !, "Please enter your Clinical Viewer instance name:", !, viewer
     set ^viewerInstance = viewer

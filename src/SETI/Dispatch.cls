@@ -236,5 +236,9 @@ ClassMethod GetViewerInstance() As %Status
 
     Quit $$$OK
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e82b6aa7f6724eacc3a0637447d503036350732
 
 }

@@ -1,5 +1,4 @@
 [![Gitter](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/SETI)
- [![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%2Fintersystems-iris-dev-template&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%2Fseti)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat&logo=AdGuard)](LICENSE)
 
 <h1 align="center">
@@ -25,26 +24,38 @@ The SDA Extension Tool (shortnamed SETI) extends SDA and then propagates extensi
 
 # Quick Start Guide
 ### Installation
+0. We are assuming you are using the standard UCR demo setup - to do that on  a fresh install, run the following:
+```
+do ##class(HS.Util.Installer).InstallDemo()
+```
 1. For Unified Care Record open a Terminal in the HSCUSTOM namespace.
-2. Use [ObjectScript Package Manager](https://openexchange.intersystems.com/package/ObjectScript-Package-Manager) to install SETI.
+3. Install ObjectScript Package Manger: 
+```
+s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/latest/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
+```
+3. Use [ObjectScript Package Manager](https://openexchange.intersystems.com/package/InterSystems-Package-Manager-1) to install SETI.
 ```
 HSCUSTOM> zpm "install seti"
 ```
-3. You will be prompted to enter the web port number for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number. 
+4. You will be prompted to enter the web port number and instance name for your Clinical Viewer instance. If you are not using Clinical Viewer it does not matter what you enter for the Clinical Viewer web port number or instance name. 
 ```
-Please enter your Clinical Viewer web port number:
-52774 
+Please enter your Clinical Viewer web :
+80 
 ```
-You can change the web port at any time by running:
+```
+Please enter your Clinical Viewer instance name:
+cv 
+```
+You can change the web port / instance name at any time by running:
 ```
 HSCUSTOM> do ##class(SETI.Setup.Ports).SetPorts()
 ```
 ### Requirements
-* [ObjectScript Package Manager](https://openexchange.intersystems.com/package/ObjectScript-Package-Manager) installed 
+* [ObjectScript Package Manager](https://openexchange.intersystems.com/package/InterSystems-Package-Manager-1) installed 
 * HealthShare with appropriate license (or see [IRIS for Health](#iris-for-health))
 * SETI uses namespace naming conventions of InstallDemo() ie. HSREGISTRY, HSANALYTICS, HSVIEWER (see [Setup Overview](#setup-overview))
 * Install to unlock Clinical Viewer functonality: [SDA Extension Tool Viewer](https://openexchange.intersystems.com/package/SETI-Viewer-1)
-### Usage ([Demo](https://intersystemscorporation-my.sharepoint.com/:v:/g/personal/lkabelka_intersystems_com/EVTw-fv2kE5IhnDx0HdrKhwBjMAwQ_fZp1OkpCQkUeKd9A))
+### Usage ([Demo- coming soon]())
 1. Add your extensions in SDA Studio.
 2. Add a patient with those extensions.
 3. View your extensions in Health Insight and Clinical Viewer. <br>
